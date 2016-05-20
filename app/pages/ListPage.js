@@ -5,6 +5,7 @@ import Loading from 'halogen/ScaleLoader';
 import DRCode from '../components/DRCode';
 
 import * as Actions from '../actions';
+import * as Signup from '../actions/signup';
 import ItemsGroup from '../components/ItemsGroup';
 
 class ListPage extends Component {
@@ -18,6 +19,7 @@ class ListPage extends Component {
   componentDidMount() {
     const {dispatch} = this.props;
     dispatch(Actions.fetchList());
+    dispatch(Signup.fetchSignupNumber());
   }
 
   onScroll(e) {
@@ -85,11 +87,14 @@ class ListPage extends Component {
   }
 
   render() {
-    const {list: {listFetched}} = this.props;
+    const {list: {listFetched}, signup: {signupNumber}} = this.props;
 
     return (
       <div className="page-container">
         {__QR_CODE__ && <DRCode showText={this.state.showDRText}/>}
+        <div className="signup-number">
+          已累计捐赠<span className="count">{signupNumber}</span>元
+        </div>
         <div className="list-page-container" onScroll={this.onScroll.bind(this)}>
           <span className="close-btn" onClick={this.slideUp.bind(this)}>
             <img src="http://wanliu-piano.b0.upaiyun.com/uploads/shop_category/image/a85ffb6fdda0f6a165b2a0be83247f25.png" />
@@ -114,7 +119,8 @@ class ListPage extends Component {
 
 function mapStateToProps(state) {
   return {
-    list: state.list
+    list: state.list,
+    signup: state.signup
   };
 }
 
