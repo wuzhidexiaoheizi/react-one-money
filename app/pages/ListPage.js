@@ -3,6 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import Loading from 'halogen/ScaleLoader';
 import DRCode from '../components/DRCode';
+import CountTo from 'react-count-to';
 
 import * as Actions from '../actions';
 import * as Signup from '../actions/signup';
@@ -92,9 +93,6 @@ class ListPage extends Component {
     return (
       <div className="page-container">
         {__QR_CODE__ && <DRCode showText={this.state.showDRText}/>}
-        <div className="signup-number">
-          已累计捐赠<span className="count">{signupNumber}</span>元
-        </div>
         <div className="list-page-container" onScroll={this.onScroll.bind(this)}>
           <span className="close-btn" onClick={this.slideUp.bind(this)}>
             <img src="http://wanliu-piano.b0.upaiyun.com/uploads/shop_category/image/a85ffb6fdda0f6a165b2a0be83247f25.png" />
@@ -104,7 +102,12 @@ class ListPage extends Component {
               onLoad={this.slideDown.bind(this)}/>
           </a>
           <div className="list-page" ref="list-page">
-            <img className="list-poster" src={__LIST_IMG__}/>
+            <div className="poster-container">
+              <img className="list-poster" src={__LIST_IMG__}/>
+              <div className="signup-count">¥
+                <CountTo to={signupNumber} speed={1234} />元
+              </div>
+            </div>
             {!listFetched && <div style={{textAlign: 'center'}}><Loading color="#FFF" size="9px" margin="4px"/></div>}
             <ul className="list">
               {this.sortByPrice([1, 3, 5, 10])}

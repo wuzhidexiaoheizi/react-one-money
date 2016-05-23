@@ -24,6 +24,7 @@
     "react": "^0.14.6",
     "react-addons-css-transition-group": "^0.14.6",
     "react-addons-update": "^0.14.6",
+    "react-count-to": "^0.4.2",
     "react-dom": "~0.14.3",
     "react-image-slider": "0.0.6",
     "react-redux": "^4.0.6",

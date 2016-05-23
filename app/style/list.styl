@@ -38,9 +38,21 @@
     z-index 3
     top 0
     
+    .poster-container
+      position relative
+    
     .list-poster
       width 100%
       display block
+      
+  .signup-count
+    position absolute
+    top 68%
+    left 60%
+    font-size 1.8em
+    color #FD0D31
+    font-weight 900
+    font-family Impact, Charcoal, sans-serif
     
   ul.list
     padding 10px
@@ -109,8 +121,29 @@
           position absolute
           right 0
           bottom 5px
-
+          
+@media (min-width: 980px)
+  .page-container .signup-count
+    font-size 6rem
     
+@media (min-width: 1200px)
+  .page-container .signup-count
+    font-size 8rem
+    
+@media (max-width: 960px)
+  .page-container .signup-count
+    font-size 5rem
 
-
+@media(max-width: 750px)
+  .page-container .signup-count
+    font-size 4rem        
+ 
+@media(max-width: 640px)
+  .page-container .signup-count
+    font-size 2.5rem
+    
+@media(max-width: 320px)
+  .page-container .signup-count
+    font-size 2rem
+    
     
