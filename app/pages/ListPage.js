@@ -23,12 +23,18 @@ class ListPage extends Component {
     dispatch(Signup.fetchSignupNumber());
   }
 
+  shouldComponentUpdate(nextProps) {
+    return nextProps.list.listFetched != this.props.list.listFetched;
+  }
+
   onScroll(e) {
     const {scrollTop, scrollHeight, offsetHeight} = e.target;
+    const drCode = this.refs.drCode;
+
     if (scrollTop + offsetHeight == scrollHeight) {
-      this.setState({showDRText: true});
+      drCode.updateShowText(true);
     } else {
-      this.setState({showDRText: false});
+      drCode.updateShowText(false);
     }
   }
 
@@ -92,7 +98,7 @@ class ListPage extends Component {
 
     return (
       <div className="page-container">
-        {__QR_CODE__ && <DRCode showText={this.state.showDRText}/>}
+        {__QR_CODE__ && <DRCode ref="drCode" />}
         <div className="list-page-container" onScroll={this.onScroll.bind(this)}>
           <div className="list-page" ref="list-page">
             <div className="poster-container">

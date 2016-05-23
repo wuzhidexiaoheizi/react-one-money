@@ -2,6 +2,14 @@ import React, {Component} from 'react';
 import TransitionGroup from 'react-addons-css-transition-group';
 
 export default class DRCode extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      showDRText: false
+    };
+  }
+
   componentDidMount() {
     this.interval = setInterval(() => {
       const desc = this.getDesc();
@@ -11,10 +19,6 @@ export default class DRCode extends Component {
         element.innerText = desc;
       }
     }, 4000);
-  }
-
-  shouldComponentUpdate(nextProps) {
-    return nextProps.showText != this.props.showText;
   }
 
   componentWillUnmount() {
@@ -29,11 +33,15 @@ export default class DRCode extends Component {
     return desc;
   }
 
+  updateShowText(bool) {
+    this.setState({ showText: bool });
+  }
+
   render() {
     return (
       <div className="dr-container">
         <TransitionGroup transitionName="left" component="div" transitionEnterTimeout={500} transitionLeaveTimeout={500}>
-          {this.props.showText && <div className="dr-text" key="drcode-text" ref="drcode-text">{this.getDesc()}</div>}
+          {this.state.showText && <div className="dr-text" key="drcode-text" ref="drcode-text">{this.getDesc()}</div>}
         </TransitionGroup>
         <img className="dr-img" src="http://wanliu-piano.b0.upaiyun.com/uploads/shop/poster/100193/6b4bfbba51112dffcf9915d82cd098d7.jpg" alt="dr"/>
       </div>
