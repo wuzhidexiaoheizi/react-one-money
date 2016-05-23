@@ -9,14 +9,14 @@
     "build": "webpack",
     "start": "webpack-dev-server --devtool eval --progress --hot --colors --host 0.0.0.0 --content-base app",
     "deploy": "NODE_ENV=PRODUCTION webpack -p --config webpack.production.config.js",
-    "upload": "node ./bin/upload.js"
+    "upload": "node ./bin/upload.js",
+    "validate": "npm ls"
   },
   "dependencies": {
     "babel-polyfill": "^6.3.14",
     "babel-runtime": "~6.2.0",
     "fastclick": "^1.0.6",
     "halogen": "^0.1.10",
-    "history": "^1.17.0",
     "install": "^0.4.1",
     "isomorphic-fetch": "^2.2.1",
     "npm": "^3.5.3",

@@ -94,18 +94,13 @@ class ListPage extends Component {
       <div className="page-container">
         {__QR_CODE__ && <DRCode showText={this.state.showDRText}/>}
         <div className="list-page-container" onScroll={this.onScroll.bind(this)}>
-          <span className="close-btn" onClick={this.slideUp.bind(this)}>
-            <img src="http://wanliu-piano.b0.upaiyun.com/uploads/shop_category/image/a85ffb6fdda0f6a165b2a0be83247f25.png" />
-          </span>
-          <a className="share-link" ref="share-link" href={__INTRODUCTION_LINK__}>
-            <img className="share-pic" src={__INTRODUCTION_POSTER__}
-              onLoad={this.slideDown.bind(this)}/>
-          </a>
           <div className="list-page" ref="list-page">
             <div className="poster-container">
               <img className="list-poster" src={__LIST_IMG__}/>
               <div className="signup-count">¥
-                <CountTo to={signupNumber} speed={1234} />元
+                <span className="count">
+                  <CountTo to={signupNumber} speed={1000} />
+                </span>元
               </div>
             </div>
             {!listFetched && <div style={{textAlign: 'center'}}><Loading color="#FFF" size="9px" margin="4px"/></div>}
