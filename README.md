@@ -23,8 +23,8 @@ $ npm run deploy
 
 ### 新的发布流程
   1. 运行 make deploy
-  2. 在运行机器上 make clean
-  2. make release DATE=2015-04-20 指定工作目录
+  2. ~在运行机器上 make clean~
+  2. ~make release DATE=2015-04-20 指定工作目录~
 
 
 ###常用修改:
