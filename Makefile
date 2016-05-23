@@ -2,11 +2,16 @@ TARGET := release/${NAME}
 TMP := /tmp/deploy/OneMoney
 LOG :=$(TMP)-$(shell date +'%s')
 PROFILE=
-S3_STORAGE=s3://wxapps
+S3_STORAGE=s3://wxtest
 
 ifdef profile
 	PROFILE:=--profile $(profile)
 endif
+
+ifdef online
+	S3_STORAGE:=s3://wxapps
+endif
+
 
 export ONE_MONEY=$(ONE_MONEY_ID)
 export QRCODE=$(QR_CODE)
