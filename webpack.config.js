@@ -10,7 +10,7 @@ var config = {
   __ONE_MONEY_ID__        : JSON.stringify(process.env.ONE_MONEY || 3), // 活动ID
   __QR_CODE__             : JSON.stringify(process.env.QRCODE || true), // 是否显示二维码
   __HOME_IMG__            : JSON.stringify(process.env.HOMEIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/102/cb347b643e4c425cbf76b0ff427261c8.jpg'), // 首页图片
-  __LIST_IMG__            : JSON.stringify(process.env.LISTIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/102/b55e61bf110c50dd198003c66cf9824a.jpg'),  // 列表图片
+  __LIST_IMG__            : JSON.stringify(process.env.LISTIMG || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/102/9912c49f5e0c0378ac72947f0fe7d266.jpg'),  // 列表图片
   __DEFAULT_AVATAR__      : JSON.stringify(process.env.DEFAULTAVATAR || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop/logo/1/default_avatar.gif!avatar'),
   __SIGNUP_URL__          : JSON.stringify(process.env.SIGNURL || 'http://0.0.0.0:8080/users/sign_in'),
   __API__                 : JSON.stringify(process.env.APIURL || '/api/promotions/one_money'),
