@@ -20,7 +20,8 @@ var config = {
   __WINNERS_NUM__         : JSON.stringify(process.env.WINNERS || 50),
   __INTRODUCTION_LINK__   : JSON.stringify(process.env.INTRODUCTIONLINK || 'https://wap.koudaitong.com/v2/showcase/mpnews?alias=5nr3d4tc&spm=m1461292357652104565180197.scan.1449810565'),
   __INTRODUCTION_POSTER__ : JSON.stringify(process.env.INTRODUCTIONPOSTER || 'http://wanliu-piano.b0.upaiyun.com/uploads/shop_category/image/0c549461633e696a8841886a888b6a93.jpg'),
-  __TIMESTAMP__           : JSON.stringify(process.env.TICK || new Date().getTime())
+  __TIMESTAMP__           : JSON.stringify(process.env.TICK || new Date().getTime()),
+  __ADJUST_LIST_BY_RATIO__ : JSON.stringify(process.env.ADJUSTLIST || true)
 };
 
 module.exports = {

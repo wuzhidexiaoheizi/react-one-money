@@ -38,6 +38,15 @@ class ListPage extends Component {
     }
   }
 
+  getSalesRatio(item) {
+    const total_amount = item.total_amount;
+    let completes = item.completes || 0;
+
+    if (completes < 0) completes = 0;
+
+    return total_amount ? completes / total_amount : 0;
+  }
+
   slideDown() {
     const timestamp = `${__TIMESTAMP__}`;
     let data = JSON.parse(localStorage.getItem(timestamp));
@@ -56,6 +65,35 @@ class ListPage extends Component {
     page.style.top = offsetHeight + 'px';
   }
 
+  sortBySalesRatioAndPrice(items) {
+    items.sort((a, b) => {
+      const ratio1 = this.getSalesRatio(a);
+      const ratio2 = this.getSalesRatio(b);
+
+      if (ratio1 == 1) {
+        return 1;
+      }
+
+      if (ratio1 < ratio2) {
+        return -1;
+      }
+
+      if (ratio1 > ratio2) {
+        return 1;
+      }
+
+      if (a.price < b.price) {
+        return 1;
+      }
+
+      if (a.price > b.price) {
+        return -1;
+      }
+
+      return 0;
+    });
+  }
+
   slideUp(e) {
     e.stopPropagation();
 
@@ -71,23 +109,37 @@ class ListPage extends Component {
   sortByPrice(priceArr) {
     const {list: {items}, dispatch} = this.props;
     const boundActionCreators = bindActionCreators(Actions, dispatch);
-    return priceArr.map(price =>
-      <ItemsGroup
+
+    return priceArr.map(price => {
+      const _items = items.filter(item => item.price == price);
+
+      if (`${__ADJUST_LIST_BY_RATIO__}`) {
+        this.sortBySalesRatioAndPrice(_items);
+      }
+
+      return (<ItemsGroup
         key={price}
         price={price}
-        items={items.filter(item => item.price == price)}
+        items={_items}
         boundActionCreators={boundActionCreators}
       />);
+    });
   }
 
   otherPrice(priceArr) {
     const {list: {items}, dispatch} = this.props;
     const boundActionCreators = bindActionCreators(Actions, dispatch);
+    const _items = items.filter(item => !priceArr.includes(+item.price));
+
+    if (`${__ADJUST_LIST_BY_RATIO__}`) {
+      this.sortBySalesRatioAndPrice(_items);
+    }
+
     return (
       <ItemsGroup
         key="other"
         price="other"
-        items={items.filter(item => !priceArr.includes(+item.price))}
+        items={_items}
         boundActionCreators={boundActionCreators}
       />
     );
